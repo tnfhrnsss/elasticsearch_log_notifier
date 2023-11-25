@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  elasticsearch:
+    uris:
+    username:
+    password:
+
+jobs:
+  cronSchedule: "0 0/2 * * * 1-5"
+
+monitoring:
+  es:
+    search:
+      index: logs_
+      services: ""
+      max-count: 30
+      during-minutes: 2
+      message: "*exception*"
+      exclude-messages: ""
+      view-page-url: http://localhost:9200
+  slack:
+    token:
+    channel:
+      id:
+
+logging:
+  level:
+    com.lzdk.monitoring: debug
+    org.elasticsearch.client.RestClient: debug
