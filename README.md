@@ -2,10 +2,11 @@
 
 This application is designed to facilitate monitoring for the occurrence of exceptions.
 
-## background
+## Background
 It was created to reduce the inconvenience of having to connect to the server and view the log every time an exception occurs, create an index with kibana, or search with elasticsearch viewer.
 
-[!IMPORTANT] Currently, the document structure is not easily customizable, but we plan to refactor it in the future so that it can be used with any document through simple configuration."
+> [!IMPORTANT] 
+> Currently, the document structure is not easily customizable, but we plan to refactor it in the future so that it can be used with any document through simple configuration.
 
 ## Requirements
 
@@ -14,7 +15,7 @@ It was created to reduce the inconvenience of having to connect to the server an
 * slack-api-client 1.29.2
 * elasticsearch-java 7.17.15
 
-# Usage
+## Usage
 
 * You can configure the elasticsearch ip and Slack details in the application.yml file.
   * You cna choose delivery time schedule.
@@ -48,7 +49,7 @@ It was created to reduce the inconvenience of having to connect to the server an
          cronSchedule: "0 0/2 * * * 1-5"
     ```
 
-## output snapshot
+## Output snapshot
 * message
 ![slack_message](https://tnfhrnsss.github.io/docs/sub-projects/img/es_log_notifier_message.png)
 
@@ -56,7 +57,7 @@ It was created to reduce the inconvenience of having to connect to the server an
 ![slack_log_detail](https://tnfhrnsss.github.io/docs/sub-projects/img/es_log_detail_view.png)
 
 
-### blog reference
+## Blog reference
 
 For further reference, please consider the following sections:
 
