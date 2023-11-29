@@ -50,8 +50,9 @@ It was created to reduce the inconvenience of having to connect to the server an
     ```
 
 ## Output snapshot
-* message
-![slack_message](https://tnfhrnsss.github.io/docs/sub-projects/img/es_log_notifier_message.png)
+* slack message
+  
+    ![slack_message](https://tnfhrnsss.github.io/docs/sub-projects/img/es_log_notifier_message.png)
 
 * detail log view
 ![slack_log_detail](https://tnfhrnsss.github.io/docs/sub-projects/img/es_log_detail_view.png)
