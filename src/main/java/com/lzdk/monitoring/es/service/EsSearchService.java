@@ -17,6 +17,7 @@ import co.elastic.clients.elasticsearch._types.query_dsl.RangeQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.WildcardQuery;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import com.lzdk.monitoring.es.domain.LogSearchResponseSdo;
+import com.lzdk.monitoring.es.domain.LogSearchTraceKey;
 import com.lzdk.monitoring.es.utils.EsSearchProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,19 +52,30 @@ public class EsSearchService {
 
             searchResponse.hits().hits().forEach(hit -> {
                 LinkedHashMap<String, Object> hashMap = (LinkedHashMap) hit.source();
-                list.add(new LogSearchResponseSdo(
-                    hit.index(),
-                    hit.id(),
-                    (String) hashMap.get("service"),
-                    (String) hashMap.get("message"),
-                    (String) hashMap.get("stacktrace"),
-                    (String) hashMap.get("@timestamp")));
+                if (grouping(list, hashMap)) {
+                    list.add(new LogSearchResponseSdo(
+                        new LogSearchTraceKey(
+                            hit.index(),
+                            hit.id(),
+                            (String) hashMap.get("traceId")
+                        ),
+                        (String) hashMap.get("service"),
+                        (String) hashMap.get("message"),
+                        (String) hashMap.get("stacktrace"),
+                        (String) hashMap.get("@timestamp")));
+                }
+
             });
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return list;
+    }
+
+    private boolean grouping(List<LogSearchResponseSdo> list, LinkedHashMap<String, Object> hashMap) {
+        String groupingField = (String) hashMap.get(EsSearchProperties.getGroupingField());
+        return list.stream().noneMatch(res -> StringUtils.isNotEmpty(groupingField) && res.getTraceKey().getTraceId().equals(groupingField));
     }
 
     private String getIndexName() {

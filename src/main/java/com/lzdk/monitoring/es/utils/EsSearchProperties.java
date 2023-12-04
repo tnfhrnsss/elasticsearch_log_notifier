@@ -20,6 +20,8 @@ public class EsSearchProperties {
 
     private static String message = "";
 
+    private static String groupingField = "";
+
     private static String excludeMessages = "";
 
     private static String viewPageUrl = "";
@@ -58,6 +60,15 @@ public class EsSearchProperties {
     @Value("${monitoring.es.search.message:}")
     public void setMessage(String value) {
         message = value;
+    }
+
+    public static String getGroupingField() {
+        return groupingField;
+    }
+
+    @Value("${monitoring.es.search.grouping-field:}")
+    public void setGroupingField(String value) {
+        groupingField = value;
     }
 
     public static String getServices() {
