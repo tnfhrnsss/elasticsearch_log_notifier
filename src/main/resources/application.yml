@@ -18,8 +18,9 @@ monitoring:
       max-count: 30
       during-minutes: 2
       message: "*exception*"
+      grouping-field: ""
       exclude-messages: ""
-      view-page-url: http://localhost:9200
+      view-page-url: http://172.16.120.131:9200
   slack:
     token:
     channel:
