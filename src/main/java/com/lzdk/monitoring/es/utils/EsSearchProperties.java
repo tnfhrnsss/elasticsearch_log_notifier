@@ -24,7 +24,9 @@ public class EsSearchProperties {
 
     private static String excludeMessages = "";
 
-    private static String viewPageUrl = "";
+    private static String basicViewerUrl = "";
+
+    private static String customViewerUrl = "";
 
     @Value("${monitoring.es.search.index:}")
     public void setIndex(String value) {
@@ -89,12 +91,21 @@ public class EsSearchProperties {
         excludeMessages = value;
     }
 
-    public static String getViewPageUrl() {
-        return viewPageUrl;
+    public static String getCustomViewerUrl() {
+        return customViewerUrl;
     }
 
-    @Value("${monitoring.es.search.view-page-url:}")
-    public void setViewPageUrl(String value) {
-        viewPageUrl = value;
+    @Value("${monitoring.es.search.viewer-url.custom:}")
+    public void setCustomViewerUrl(String value) {
+        customViewerUrl = value;
+    }
+
+    public static String getBasicViewerUrl() {
+        return basicViewerUrl;
+    }
+
+    @Value("${monitoring.es.search.viewer-url.basic:}")
+    public void setBasicViewerUrl(String value) {
+        basicViewerUrl = value;
     }
 }

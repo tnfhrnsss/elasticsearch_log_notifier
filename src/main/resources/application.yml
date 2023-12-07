@@ -20,7 +20,10 @@ monitoring:
       message: "*exception*"
       grouping-field: ""
       exclude-messages: ""
-      view-page-url: http://localhost:9200
+      viewer-url:
+        basic: http://localhost:9200
+        custom: http://localhost:8082?pageUrl=
+
   slack:
     token:
     channel:
