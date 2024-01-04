@@ -1,11 +1,11 @@
 server:
-  port: 7778
+  port: 8080
 
 spring:
   elasticsearch:
-    uris: http://172.16.120.131:9200, http://172.16.120.138:9200, http://172.16.120.139:9200
-    username: elastic
-    password: changeme
+    uris:
+    username:
+    password:
 
 jobs:
   cronSchedule: "0 0/2 * * * 1-5"
@@ -13,22 +13,21 @@ jobs:
 monitoring:
   es:
     search:
-      index: logs_attic_
-      services: "+btalk +ctalk +messengerconnector +insight"
+      index: logs_
+      services: ""
       max-count: 30
       during-minutes: 2
       message: "*exception*"
-      grouping-field: "traceId"
+      grouping-field: ""
       exclude-messages: ""
       viewer-url:
-        basic: http://172.16.120.131:9200
-        custom: http://172.16.100.130:8082?pageUrl=
+        basic: http://localhost:9200
+        custom: http://localhost:8082?pageUrl=
 
   slack:
-    token: xoxb-5317578370853-5328816300484-jkbaAcUgNhNxOektPTZdbWe1
+    token:
     channel:
-      id: C059EBP8T7D
-      name: #developer
+      id:
 
 logging:
   level:
