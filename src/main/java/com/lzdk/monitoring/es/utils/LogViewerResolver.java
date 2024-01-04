@@ -24,6 +24,7 @@ public class LogViewerResolver {
 
         if (StringUtils.isEmpty(EsSearchProperties.getCustomViewerUrl())) {
             multiValueMap.add("pretty", "true");
+
         }
         String searchUrl = UriComponentsBuilder.fromUriString(EsSearchProperties.getBasicViewerUrl()).path(subPath).queryParams(multiValueMap).build().toString();
         return resolveByViewer(searchUrl);
